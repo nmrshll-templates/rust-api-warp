@@ -13,12 +13,17 @@ This is an open problem and you can make necessary assumptions.
 ## Decisions
 
 - Routes/methods:
+
   - get service's public key
     - no rate-limiting/PoW
   - sign data
     - rate-limited with PoW
     - data as base64-encoded bytes (since HTTP is text-only)
-  - no need for a route to verify the signature (this can be done on the client side)
+  - no need for a route to verify the signature:
+    - this can be done on the client side
+    - the user would need: the data, the server's signature, and to know which signature scheme was used
+    - could build a client to automate that
+
 - Errors:
   - Invalid PoW
   - Data already signed
